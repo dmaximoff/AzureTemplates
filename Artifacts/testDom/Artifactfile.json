@@ -1,5 +1,5 @@
 {
-    "$schema": "https://github.com/dmaximoff/AzureTemplates/blob/master/Artifacts/PromoteToDC/Artifactfile.json",
+    "$schema": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/testDom/Artifactfile.json",
     "title": "testdom",
     "description": "testdom",
     "publisher": "Quest",
