@@ -1,5 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "$schema": "https://github.com/dmaximoff/AzureTemplates/blob/master/Artifacts/DAPreReqs/Artifactfile.json",
     "title": "Desktop Authority PreReqs",
     "description": "Desktop Authority PreReqs",
     "publisher": "Quest",
