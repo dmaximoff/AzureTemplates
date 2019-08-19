@@ -1,6 +1,9 @@
 # Install AD DS tools
 Install-windowsfeature -name AD-Domain-Services -IncludeManagementTools 
+Start-Sleep -s 30
 # Enable network discovery
-netsh advfirewall firewall set rule group=înetwork discoveryî new enable=yes
+netsh advfirewall firewall set rule group=‚Äùnetwork discovery‚Äù new enable=yes
+Start-Sleep -s 30
 # Promote machine to DC
 Install-ADDSForest  -domainname domtest.local -SafeModeAdministratorPassword (convertto-securestring "Badger1!" -asplaintext -Force) -Force
+Start-Sleep -s 30
