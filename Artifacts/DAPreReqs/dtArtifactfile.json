@@ -7,7 +7,6 @@
         "Windows",
         "Powershell",
         "Lab"
-		"Desktop Authority"
     ],
     "iconUri": "https://github.com/dmaximoff/AzureTemplates/blob/master/quest-logo.png",
     "targetOsType": "Windows",
