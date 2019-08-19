@@ -8,7 +8,7 @@
         "Powershell",
         "Lab"
     ],
-    "iconUri": "https://github.com/dmaximoff/AzureTemplates/blob/master/quest-logo.png",
+    "iconUri": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/quest-logo.png",
     "targetOsType": "Windows",
     "runCommand": {
         "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./NewForest.ps1 -PackageList ', 'azurepowershell', '\"')]"
