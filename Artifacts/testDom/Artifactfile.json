@@ -1,0 +1,16 @@
+{
+    "$schema": "https://github.com/dmaximoff/AzureTemplates/blob/master/Artifacts/PromoteToDC/Artifactfile.json",
+    "title": "testdom",
+    "description": "testdom",
+    "publisher": "Quest",
+    "tags": [
+        "Windows",
+        "Powershell",
+        "Lab"
+    ],
+    "iconUri": "https://www.quest.com/images/shared/quest-logo.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./NewForest.ps1 -PackageList ', 'azurepowershell', '\"')]"
+    }
+}
