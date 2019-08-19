@@ -10,7 +10,7 @@
     ],
     "iconUri": "https://www.quest.com/images/shared/quest-logo.png",
     "targetOsType": "Windows",
-    "runCommand": {
-        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./DAPreReqs.ps1 -PackageList ', 'azurepowershell', '\"')]"
+       "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./NewForest.ps1 -PackageList ', 'azurepowershell', '\"')]"
     }
 }
