@@ -1,3 +1,10 @@
+# Install AD DS tools
+Install-windowsfeature -name AD-Domain-Services -IncludeManagementTools 
+Start-Sleep -s 30
+# Enable network discovery
+netsh advfirewall firewall set rule group=”network discovery” new enable=yes
+Start-Sleep -s 30
+
 # Install IIS
 Install-WindowsFeature -name Web-Server -ComputerName localhost  -IncludeManagementTools
 
