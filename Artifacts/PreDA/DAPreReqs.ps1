@@ -1,3 +1,6 @@
+# Install IIS
+Install-WindowsFeature -name Web-Server -ComputerName localhost  -IncludeManagementTools
+
 # Download .Net from github
 $url = 'https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/PreDA/NDP461-KB3102438-Web.exe'
 $output = "c:\Packages\NDP461-KB3102438-Web.exe"
