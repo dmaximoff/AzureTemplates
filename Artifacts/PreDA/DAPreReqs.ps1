@@ -1,9 +1,27 @@
+# Download .Net from github
+$url = 'https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/PreDA/NDP461-KB3102438-Web.exe'
+$output = "c:\Packages\NDP461-KB3102438-Web.exe"
+(New-Object System.Net.WebClient).DownloadFile($url, $output)
+
+# Download C++ redist from github
+$url = 'https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/PreDA/vcredist_x86.exe'
+$output = "c:\Packages\vcredist_x86.exe"
+(New-Object System.Net.WebClient).DownloadFile($url, $output)
+
+# Download SQL tools from github
+$url = 'https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/PreDA/SQLServer2005_BC_x64.msi'
+$output = "c:\Packages\SQLServer2005_BC_x64.msi"
+(New-Object System.Net.WebClient).DownloadFile($url, $output)
+
 # Install MS Redistributable C++
-.\vcredist_x86.exe /q
+c:\Packages\vcredist_x86.exe /q
+Start-Sleep -s 15
 # Install .Net 4.6 SP1
-NDP461-KB3102436-x86-x64-AllOS-ENU.exe /q /norestart
+C:\Packages\NDP461-KB3102438-Web.exe /q /norestart
+Start-Sleep -s 15
 # Install SQL Backward Compatibility
-.\SQLServer2005_BC_x64.msi /q
+C:\Packages\SQLServer2005_BC_x64.msi /q
+Start-Sleep -s 15
 
 # Sets Computer Browser service to Automatic and Running
 Set-Service -Name Browser -StartupType Automatic
@@ -13,6 +31,6 @@ Set-Service -Name Browser -Status Running
 # Save the password so the drive will persist on reboot
 Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
 # Mount  dams-releases
-New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-releases"
+New-PSDrive -Name y -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-releases"
 # Mount dams-builds
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-builds"
