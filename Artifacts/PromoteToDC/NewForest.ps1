@@ -5,5 +5,5 @@ Start-Sleep -s 30
 netsh advfirewall firewall set rule group=”network discovery” new enable=yes
 Start-Sleep -s 30
 # Promote machine to DC
-Install-ADDSForest  -domainname domtest.local -SafeModeAdministratorPassword (convertto-securestring "Badger1!" -asplaintext -Force) -Force
+# Install-ADDSForest  -domainname domtest.local -SafeModeAdministratorPassword (convertto-securestring "Badger1!" -asplaintext -Force) -Force
 Start-Sleep -s 30
