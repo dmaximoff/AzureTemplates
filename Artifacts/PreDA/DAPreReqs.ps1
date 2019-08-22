@@ -31,7 +31,7 @@ C:\Packages\SQLServer2005_BC_x64.msi /q
 Start-Sleep -s 15
 
 # Install IIS
-Install-WindowsFeature -name Web-Server -ComputerName localhost  -IncludeManagementTools
+Install-WindowsFeature -name Web-Server -ComputerName localhost  -IncludeAllSubFeature -IncludeManagementTools
 
 # Sets Computer Browser service to Automatic and Running
 Set-Service -Name Browser -StartupType Automatic
