@@ -36,10 +36,6 @@ Start-Sleep -s 15
 # Install IIS
 Install-WindowsFeature -name Web-Server -ComputerName localhost  -IncludeAllSubFeature -IncludeManagementTools
 
-# Sets Computer Browser service to Automatic and Running
-Set-Service -Name Browser -StartupType Automatic
-Set-Service -Name Browser -Status Running
-
 # Mount Azure file share
 # Save the password so the drive will persist on reboot
 Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
