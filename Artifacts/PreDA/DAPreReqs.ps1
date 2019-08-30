@@ -43,3 +43,6 @@ Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:A
 New-PSDrive -Name y -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-releases"
 # Mount dams-builds
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-builds"
+# Mount Engineering/repo share
+New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
+
