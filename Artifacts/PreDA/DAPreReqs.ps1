@@ -44,5 +44,5 @@ New-PSDrive -Name y -PSProvider FileSystem -Root "\\adalab7435.file.core.windows
 # Mount dams-builds
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-builds"
 # Mount Engineering/repo share
-New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
+New-PSDrive -Name X -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
 
