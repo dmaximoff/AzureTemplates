@@ -9,4 +9,4 @@ New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows
 
 copy z:\repo\DA11AutomatedInstaller.exe c:\packages\
 # Install DA 11
-.\DA11AutomatedInstaller.exe
+c:\packages\DA11AutomatedInstaller.exe
