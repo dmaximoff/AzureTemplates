@@ -44,5 +44,8 @@ New-PSDrive -Name y -PSProvider FileSystem -Root "\\adalab7435.file.core.windows
 # Mount dams-builds
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-builds"
 # Mount Engineering/repo share
-New-PSDrive -Name X -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
-
+New-PSDrive -Name E -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
+# Save the password so the drive will persist on reboot
+Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
+# Mount the drive
+New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
