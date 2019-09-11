@@ -1,4 +1,4 @@
-# Prevent Server Manager from loading on startup
+﻿# Prevent Server Manager from loading on startup
 New-ItemProperty -Path HKCU:\Software\Microsoft\ServerManager -Name DoNotOpenServerManagerAtLogon -PropertyType DWORD -Value "0x1" –Force
 
 # Install AD DS tools
@@ -37,7 +37,7 @@ Start-Sleep -s 15
 Install-WindowsFeature -name Web-Server -ComputerName localhost  -IncludeAllSubFeature -IncludeManagementTools
 
 # Mount Azure file share
-#Save the password so the drive will persist on reboot
+# Save the password so the drive will persist on reboot
 Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
 # Mount  dams-releases
 New-PSDrive -Name y -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-releases"
