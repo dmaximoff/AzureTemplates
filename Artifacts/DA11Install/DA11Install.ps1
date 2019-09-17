@@ -30,7 +30,7 @@ public class SFW {
 "@
 
 Start-Process -FilePath "C:\packages\DesktopAuthority_11.0.0.463.exe"
-Start-Sleep -s 10
+Start-Sleep -s 20
 
 
 # Welcome to DA
