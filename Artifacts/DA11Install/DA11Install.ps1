@@ -1,12 +1,128 @@
-# Save the password so the drive will persist on reboot
+﻿# Mount Azure share and copy DA to c:\packages
 Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
-# Mount  dams-releases
-New-PSDrive -Name x -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-releases"
-# Mount dams-builds
-New-PSDrive -Name y -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\dams-builds"
+New-PSDrive -Name E -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
 
-New-PSDrive -Name Z -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
+mkdir c:\packages
+copy e:\repo\DesktopAuthority_11.0.0.463.exe C:\Packages
 
-copy z:\repo\DA11AutomatedInstaller.exe c:\packages\
-# Install DA 11
-c:\packages\DA11AutomatedInstaller.exe
+# Add domain\sladmin to local Administrators
+
+$domain = (Get-WmiObject Win32_ComputerSystem).Domain
+$domain = $domain.Substring(0, $domain.IndexOf('.'))
+
+$computer = "localhost"
+$group = "Administrators"
+$user = "sladmin"
+$de = [ADSI]"WinNT://$computer/$Group,group"
+$de.psbase.Invoke("Add",([ADSI]"WinNT://$domain/$user").path)
+
+Remove-Item -path  C:\ProgramData\Quest  -Recurse 
+# Start-Sleep -s 10
+
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public class SFW {
+ [DllImport("user32.dll")]
+ [return: MarshalAs(UnmanagedType.Bool)]
+ public static extern bool SetForegroundWindow(IntPtr hWnd);
+}
+"@
+
+Start-Process -FilePath "C:\packages\DesktopAuthority_11.0.0.463.exe"
+Start-Sleep -s 10
+
+
+# Welcome to DA
+(New-Object -ComObject WScript.Shell).AppActivate((get-process DesktopAuthority_11.0.0.463).MainWindowTitle)
+Start-Sleep -s 10
+$wshell = New-Object -ComObject wscript.shell;
+$wshell.SendKeys('{TAB}{TAB}{TAB}{TAB}{UP}{TAB}{TAB}{ENTER}')
+Start-Sleep -s 26
+
+
+# Forces New License Key Required window to foreground
+$fw =  (get-process 'DAInstaller').MainWindowHandle
+[SFW]::SetForegroundWindow($fw)
+Start-Sleep -s 1
+$wshell.SendKeys('{ENTER}')
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -s 16
+
+# Welcome to DA Prereqs 
+$fw =  (get-process 'DAInstaller').MainWindowHandle
+[SFW]::SetForegroundWindow($fw)
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -s 4
+
+# Enter DA License key
+$fw =  (get-process 'DAInstaller').MainWindowHandle
+[SFW]::SetForegroundWindow($fw)
+Start-Sleep -s 4
+$wshell.SendKeys('{TAB}{TAB}{TAB}{TAB}{TAB}{TAB}')
+$wshell.SendKeys('Y5dxKdq6mAnGgwoSADBqFsDl28jENSh7hH3Z5g2rIwvnIrYXGv6D94b{+}bhT1gJto9OlI31Ta7AJD4z2OyJHLl2w1TYKrXSAr3b6uGw==')
+$wshell.SendKeys('{TAB}{TAB}{TAB}{TAB}')
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -s 4
+
+# Set up DB
+$fw =  (get-process 'DAInstaller').MainWindowHandle
+[SFW]::SetForegroundWindow($fw)
+Start-Sleep -s 2
+$wshell.SendKeys('{TAB}{TAB}{TAB}{TAB}{TAB}{TAB}{TAB}')
+$wshell.SendKeys('Badger1!')
+$wshell.SendKeys('{TAB}')
+$wshell.SendKeys('Badger1!')
+Start-Sleep -s 2
+$wshell.SendKeys('{TAB}{TAB}{TAB}{TAB}{ENTER}')
+Start-Sleep -s 8
+
+# File Locations and Backup 
+$fw =  (get-process 'DAInstaller').MainWindowHandle
+[SFW]::SetForegroundWindow($fw)
+Start-Sleep -s 2
+$wshell.SendKeys('{ENTER}')
+
+# DA Master Services
+$domain = (Get-WmiObject Win32_ComputerSystem).Domain
+$domain = $domain.Substring(0, $domain.IndexOf('.'))
+$fw =  (get-process 'DAInstaller').MainWindowHandle
+[SFW]::SetForegroundWindow($fw)
+Start-Sleep -s 2
+$wshell.SendKeys('{TAB}{TAB}{TAB}{TAB}{TAB}{TAB}{TAB}')
+$wshell.SendKeys($domain)
+$wshell.SendKeys('\sladmin')
+$wshell.SendKeys('{TAB}{TAB}{TAB}')
+$wshell.SendKeys('Badger1!')
+$wshell.SendKeys('{TAB}')
+$wshell.SendKeys($domain)
+$wshell.SendKeys('\sladmin')
+$wshell.SendKeys('{TAB}{TAB}{TAB}')
+$wshell.SendKeys('Badger1!')
+$wshell.SendKeys('{TAB}{TAB}{ENTER}')
+Start-Sleep -s 5
+
+# User or Group
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -s 5
+
+# Website Config
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -s 5
+
+# Off Network
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -s 5
+
+# Certificate
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -s 5
+
+# Install
+$wshell.SendKeys('{ENTER}')
+Start-Sleep -S 900
+
+
+
+
+

@@ -2,7 +2,7 @@
     "$schema": "https://github.com/dmaximoff/AzureTemplates/blob/master/Artifacts/DA11Install/Artifactfile.json",
     "title": "Desktop Authority 11 Installation",
     "description": "Desktop Authority 11 Installation",
-    "publisher": "Jeff Walter",
+    "publisher": "David Maximoff",
     "tags": [
         "Windows",
         "Powershell",
