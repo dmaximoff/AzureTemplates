@@ -1,5 +1,5 @@
 {
-    "$schema": "https://github.com/dmaximoff/AzureTemplates/blob/master/Artifacts/DA11Install/Artifactfile.json",
+    https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/DA11Install/Artifactfile.json
     "title": "Desktop Authority 11 Installation",
     "description": "Desktop Authority 11 Installation",
     "publisher": "David Maximoff",
