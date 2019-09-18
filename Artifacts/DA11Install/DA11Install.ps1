@@ -29,7 +29,11 @@ public class SFW {
 }
 "@
 
-Start-Process -FilePath "C:\packages\DesktopAuthority_11.0.0.463.exe"
+# Run DA installer as domain\admin
+$username = "$domain\dadmin"
+$password = "Badger1!"
+$credentials = New-Object System.Management.Automation.PSCredential -ArgumentList @($username,(ConvertTo-SecureString -String $password -AsPlainText -Force))
+Start-Process -FilePath "C:\packages\DesktopAuthority_11.0.0.463.exe" -Credential ($credentials)
 Start-Sleep -s 60
 
 
