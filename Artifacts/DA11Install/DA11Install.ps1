@@ -1,4 +1,23 @@
-﻿# Mount Azure share and copy DA to c:\packages
+# Disable UAC
+$osversion = (Get-CimInstance Win32_OperatingSystem).Version 
+$version = $osversion.split(".")[0] 
+ 
+if ($version -eq 10) { 
+    Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value "0" 
+} ElseIf ($Version -eq 6) { 
+    $sub = $version.split(".")[1] 
+    if ($sub -eq 1 -or $sub -eq 0) { 
+        Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableLUA" -Value "0" 
+    } Else { 
+        Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value "0" 
+    } 
+} ElseIf ($Version -eq 5) { 
+    Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableLUA" -Value "0" 
+} Else { 
+    Set-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value "0" 
+}
+ 
+ # Mount Azure share and copy DA to c:\packages
 Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
 New-PSDrive -Name E -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
 
@@ -6,7 +25,6 @@ mkdir c:\packages
 copy e:\repo\DesktopAuthority_11.0.0.463.exe C:\Packages
 
 # Add domain\sladmin to local Administrators
-
 $domain = (Get-WmiObject Win32_ComputerSystem).Domain
 $domain = $domain.Substring(0, $domain.IndexOf('.'))
 
