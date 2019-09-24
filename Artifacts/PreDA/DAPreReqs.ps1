@@ -1,6 +1,3 @@
-﻿# Prevent Server Manager from loading on startup
-New-ItemProperty -Path HKCU:\Software\Microsoft\ServerManager -Name DoNotOpenServerManagerAtLogon -PropertyType DWORD -Value "0x1" –Force
-
 # Install AD DS tools
 Install-windowsfeature -name AD-Domain-Services -IncludeManagementTools 
 Start-Sleep -s 30
