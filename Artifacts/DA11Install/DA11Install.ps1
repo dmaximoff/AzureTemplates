@@ -21,7 +21,6 @@ if ($version -eq 10) {
 Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
 New-PSDrive -Name E -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
 
-mkdir c:\packages
 copy e:\repo\DesktopAuthority_11.0.0.463.exe C:\Packages
 
 # Validate DA is running before proceding
