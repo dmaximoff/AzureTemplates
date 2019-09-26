@@ -23,15 +23,6 @@ New-PSDrive -Name E -PSProvider FileSystem -Root "\\adalab7435.file.core.windows
 
 copy e:\repo\DesktopAuthority_11.0.0.463.exe C:\Packages
 
-# Validate DA is running before proceding
-$started = $false
-Do {
-    $status = Get-Process DesktopAuthority_11.0.0.463 -ErrorAction SilentlyContinue
-    If (!($status)) { Write-Host 'Waiting for process to start' ; Start-Sleep -Seconds 1 }
-    Else { Write-Host 'Process has started' ; $started = $true }
-}
-Until ( $started )
-
 # Add domain\sladmin to local Administrators
 $domain = (Get-WmiObject Win32_ComputerSystem).Domain
 $domain = $domain.Substring(0, $domain.IndexOf('.'))
@@ -60,7 +51,15 @@ $username = "$domain\dadmin"
 $password = "Badger1!"
 $credentials = New-Object System.Management.Automation.PSCredential -ArgumentList @($username,(ConvertTo-SecureString -String $password -AsPlainText -Force))
 Start-Process -FilePath "C:\packages\DesktopAuthority_11.0.0.463.exe" -Credential ($credentials)
-Start-Sleep -s 60
+
+# Validate DA is running before proceding
+$started = $false
+Do {
+    $status = Get-Process DesktopAuthority_11.0.0.463 -ErrorAction SilentlyContinue
+    If (!($status)) { Write-Host 'Waiting for process to start' ; Start-Sleep -Seconds 1 }
+    Else { Write-Host 'Process has started' ; $started = $true }
+}
+Until ( $started )
 
 
 # Welcome to DA
