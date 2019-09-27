@@ -20,8 +20,8 @@ if ($version -eq 10) {
  # Mount Azure share and copy DA to c:\packages
 Invoke-Expression -Command "cmdkey /add:adalab7435.file.core.windows.net /user:Azure\adalab7435 /pass:cDbn182dElr9qMSs85n7nchyGEmbvGZw+6BVKsnfkIhZ+8SySm/gBt9rLMCfK7caquYSmPzjVIurXW04iTeTTw=="
 New-PSDrive -Name E -PSProvider FileSystem -Root "\\adalab7435.file.core.windows.net\engineering"
-
-copy e:\repo\DesktopAuthority_11.0.0.463.exe C:\Packages
+mkdir c:\da
+copy e:\repo\DesktopAuthority_11.0.0.463.exe C:\da
 
 # Add domain\sladmin to local Administrators
 $domain = (Get-WmiObject Win32_ComputerSystem).Domain
@@ -50,7 +50,7 @@ public class SFW {
 $username = "$domain\dadmin"
 $password = "Badger1!"
 $credentials = New-Object System.Management.Automation.PSCredential -ArgumentList @($username,(ConvertTo-SecureString -String $password -AsPlainText -Force))
-Start-Process -FilePath "C:\packages\DesktopAuthority_11.0.0.463.exe" -Credential ($credentials)
+Start-Process -FilePath "C:\da\DesktopAuthority_11.0.0.463.exe" -Credential ($credentials)
 
 # Validate DA is running before proceding
 $started = $false
