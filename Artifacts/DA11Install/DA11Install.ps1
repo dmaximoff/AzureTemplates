@@ -51,15 +51,16 @@ $username = "$domain\dadmin"
 $password = "Badger1!"
 $credentials = New-Object System.Management.Automation.PSCredential -ArgumentList @($username,(ConvertTo-SecureString -String $password -AsPlainText -Force))
 Start-Process -FilePath "C:\da\DesktopAuthority_11.0.0.463.exe" -Credential ($credentials)
+Start-Sleep -s 30
 
 # Validate DA is running before proceding
-$started = $false
-Do {
-    $status = Get-Process DesktopAuthority_11.0.0.463 -ErrorAction SilentlyContinue
-    If (!($status)) { Write-Host 'Waiting for process to start' ; Start-Sleep -Seconds 1 }
-    Else { Write-Host 'Process has started' ; $started = $true }
-}
-Until ( $started )
+#$started = $false
+#Do {
+#    $status = Get-Process DesktopAuthority_11.0.0.463 -ErrorAction SilentlyContinue
+#    If (!($status)) { Write-Host 'Waiting for process to start' ; Start-Sleep -Seconds 1 }
+#    Else { Write-Host 'Process has started' ; $started = $true }
+#}
+#Until ( $started )
 
 
 # Welcome to DA
