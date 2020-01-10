@@ -5,6 +5,11 @@ Start-Sleep -s 30
 netsh advfirewall firewall set rule group=”network discovery” new enable=yes
 Start-Sleep -s 30
 
+# DA11 Install script from github
+$url = 'https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/DA11Install/DA11Install.ps1'
+$output = "c:\Packages\DA11Install.ps1"
+(New-Object System.Net.WebClient).DownloadFile($url, $output)
+
 # Download .Net from github
 $url = 'https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/PreDA/NDP461-KB3102438-Web.exe'
 $output = "c:\Packages\NDP461-KB3102438-Web.exe"
