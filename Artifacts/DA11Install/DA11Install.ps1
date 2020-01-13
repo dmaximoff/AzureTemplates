@@ -53,7 +53,7 @@ $username = "$domain\sladmin"
 $password = "Lionfish1!"
 $credentials = New-Object System.Management.Automation.PSCredential -ArgumentList @($username,(ConvertTo-SecureString -String $password -AsPlainText -Force))
 Start-Process -FilePath $File -Credential ($credentials)
-Start-Sleep -s 30
+Start-Sleep -s 10
 
 # Validate DA is running before proceding
 #$started = $false
