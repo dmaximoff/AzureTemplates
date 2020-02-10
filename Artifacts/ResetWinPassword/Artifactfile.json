@@ -1,0 +1,16 @@
+{
+    "$schema": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/DA11Install/Artifactfile.json",
+    "title": "Reset Windows Password",
+    "description": "Reset Windows Password",
+    "publisher": "David Maximoff",
+    "tags": [
+        "Windows",
+        "Powershell",
+	"Desktop Authority"
+    ],
+    "iconUri": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/quest-logo.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./resetwinpass.ps1 -PackageList ', 'azurepowershell', '\"')]"
+    }
+}
