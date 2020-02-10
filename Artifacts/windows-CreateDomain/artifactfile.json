@@ -1,5 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "$schema": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/windows-CreateDomain/artifactfile.json",
     "title": "Create Domain",
     "description": "Create an AD Domain in a new Forest",
     "publisher": "Roger Zander",
@@ -8,7 +8,7 @@
         "Domain",
         "AD"
     ],
-    "iconUri": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Artifacts/windows-CreateDomain/createDomain.png",
+    "iconUri": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/quest-logo.png",
     "targetOsType": "Windows",
     "parameters": {
         "DomainName": {

@@ -1,0 +1,16 @@
+{
+    "$schema": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/DA11Install/Artifactfile.json",
+    "title": "Desktop Authority 11 Installation",
+    "description": "Desktop Authority 11 Installation",
+    "publisher": "David Maximoff",
+    "tags": [
+        "Windows",
+        "Powershell",
+	"Desktop Authority"
+    ],
+    "iconUri": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/quest-logo.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./DA11Install.ps1 -PackageList ', 'azurepowershell', '\"')]"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/Artifacts/PreDA/Artifactfile.json",
+    "title": "Desktop Authority PreReqs",
+    "description": "Desktop Authority PreReqs",
+    "publisher": "Quest",
+    "tags": [
+        "Windows",
+        "Powershell",
+        "Lab",
+		"Desktop Authority"
+    ],
+    "iconUri": "https://raw.githubusercontent.com/dmaximoff/AzureTemplates/master/quest-logo.png",
+    "targetOsType": "Windows",
+    "runCommand": {
+        "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./DAPreReqs.ps1 -PackageList ', 'azurepowershell', '\"')]"
+    }
+}
